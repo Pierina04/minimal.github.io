@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OBRAS</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Agregamos Font Awesome para obtener el icono de hamburguesa -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=League+Gothic&display=swap"> <!-- Agregamos la fuente League Gothic -->
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #f8f9fa; /* Color de fondo */
+      position: relative; /* Añadido */
+    }
+    .footer {
+      background-color: rgba(255, 255, 255, 0.5);
+      color: #333; /* Texto oscuro para contrastar */
+      padding: 13px 0;
+      position: fixed;
+      width: 100%;
+      bottom: 0;
+      text-align: center;
+    }
+    .navbar {
+      background-color: rgba(255, 255, 255, 0.7); /* Color de fondo de la barra de navegación con transparencia */
+      padding: 20px;
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 350px; /* Ancho de la barra de navegación */
+      height: 100vh; /* Altura para cubrir toda la pantalla */
+      transform: translateX(100%); /* Ocultar la barra de navegación al principio */
+      transition: transform 0.3s ease-in-out; /* Agregar una transición suave */
+      z-index: 999; /* Asegurar que la barra de navegación esté encima del contenido */
+      display: flex; /* Mostrar elementos como flexbox */
+      flex-direction: column; /* Apilar elementos verticalmente */
+      justify-content: center; /* Centrar verticalmente los elementos */
+    }
+    .navbar.active {
+      transform: translateX(0); /* Mostrar la barra de navegación cuando esté activa */
+    }
+    .nav-link {
+      color: #C21F4F; /* Color de texto de los enlaces */
+      font-family: 'League Gothic', sans-serif; /* Tipografía de los enlaces */
+      font-size: 35px; /* Tamaño de fuente de los enlaces */
+      text-decoration: none; /* Quitar subrayado de los enlaces */
+      margin-bottom: 15px; /* Espacio entre enlaces */
+    }
+    .nav-link:hover {
+      color: #000; /* Cambiar el color del texto al pasar el cursor */
+    }
+    .menu-toggle {
+      color: #000; /* Color del icono de hamburguesa */
+      font-size: 40px; /* Tamaño del icono aumentado */
+      cursor: pointer; /* Cambiar el cursor al pasar por encima del icono */
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000; /* Asegurar que el icono esté encima de la barra de navegación */
+    }
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5); /* Color oscuro semi-transparente */
+      z-index: 998; /* Asegurar que el fondo oscuro esté detrás de la barra de navegación */
+      display: none; /* Ocultar el fondo oscuro inicialmente */
+    }
+    .overlay.active {
+      display: block; /* Mostrar el fondo oscuro cuando la barra de navegación esté activa */
+    }
+
+    /* Estilos para el Responsive Image Grid */
+    * {
+      box-sizing: border-box;
+    }
+
+    .header {
+      text-align: center;
+      padding: 32px;
+    }
+
+    .header h1 {
+      color: #C21F4F; /* Color del texto */
+      font-family: 'League Gothic', sans-serif; /* Tipografía del título */
+      font-size: 80px;
+    }
+
+    /* Crear cuatro columnas iguales que se colocan una al lado de la otra */
+    .column {
+      flex: 25%;
+      max-width: 25%;
+      padding: 0 4px;
+    }
+
+    .column img {
+      margin-top: 8px;
+      vertical-align: middle;
+      filter: grayscale(100%) brightness(70%); /* Blanco y negro más oscuro */
+      transition: filter 0.5s ease;
+    }
+
+    .column img:hover {
+      filter: grayscale(0%) brightness(100%); /* Restaurar el color original */
+    }
+
+    /* Diseño responsivo - hace un diseño de dos columnas en lugar de cuatro columnas */
+    @media screen and (max-width: 800px) {
+      .column {
+        flex: 50%;
+        max-width: 50%;
+      }
+    }
+
+    /* Diseño responsivo - hace que las dos columnas se apilen una encima de la otra en lugar de una al lado de la otra */
+    @media screen and (max-width: 600px) {
+      .column {
+        flex: 100%;
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Icono de menú hamburguesa -->
+  <div class="menu-toggle" onclick="toggleNavbar()">
+    <i class="fas fa-bars"></i>
+  </div>
+
+  <!-- Fondo oscuro -->
+  <div class="overlay" onclick="toggleNavbar()"></div>
+
+  <!-- Barra de navegación -->
+  <nav class="navbar" id="navbar">
+    <a href="index.html" class="nav-link">HOME</a>
+    <a href="historia.html" class="nav-link">HISTORIA</a>
+    <a href="obras.html" class="nav-link">OBRAS</a>
+    <a href="artistas.html" class="nav-link">ARTISTAS</a>
+    <a href="formadevida.html" class="nav-link">FORMA DE VIDA</a>
+    <a href="contacto.html" class="nav-link">CONTACTO</a>
+  </nav>
+
+  <!-- Cabecera -->
+  <div class="header">
+    <h1>O B R A S</h1>
+  </div>
+
+  <!-- Grid de Fotos -->
+  <div class="row"> 
+    <div class="column">
+      <img src="images/obras/donald3.jpeg" style="width:100%">
+      <img src="images/obras/ad.jpeg" style="width:100%">
+      <img src="images/obras/franks.jpg" style="width:100%">
+      <img src="images/obras/frank2.webp" style="width:100%">
+    </div>
+
+    <div class="column">
+      <img src="images/obras/richard.jpeg" style="width:100%">
+      <img src="images/obras/sol1.jpeg" style="width:100%">
+      <img src="images/obras/163eedec-6ebc-4385-a655-90b0b41994fc.jpeg" style="width:100%">
+      <img src="images/obras/frank4.jpeg" style="width:100%">
+
+    </div> 
+
+    <div class="column">
+      <img src="images/obras/richard2.webp" style="width:100%">
+      <img src="images/obras/solobra.jpeg" style="width:100%">
+      <img src="images/obras/richard3.webp" style="width:100%">
+     <img src="images/obras/richardserra.webp" style="width:100%">
+     <img src="images/obras/donald4.webp" style="width:100%">
+     <img src="images/obras/ad.webp" style="width:100%">
+    
+    </div>
+
+    <div class="column">
+      <img src="images/obras/donald.webp" style="width:100%">
+      <img src="images/obras/donald2.webp" style="width:100%">
+      <img src="images/obras/Sol-LeWitt-Chair_1000.jpg" style="width:100%">
+      <img src="images/obras/sol.png" style="width:100%">
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <span>Derechos de autor © 2024. Minimal.</span>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    function toggleNavbar() {
+      var navbar = document.getElementById("navbar");
+      var overlay = document.querySelector(".overlay");
+      navbar.classList.toggle("active");
+      overlay.classList.toggle("active");
+    }
+  </script>
+</body>
+</html>

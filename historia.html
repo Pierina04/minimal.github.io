@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HISTORIA</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Agregamos Font Awesome para obtener el icono de hamburguesa -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=League+Gothic&display=swap"> <!-- Agregamos la fuente League Gothic -->
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #f8f9fa; /* Color de fondo */
+      position: relative; /* Añadido */
+    }
+    .header {
+      text-align: center;
+      margin-top: 95px; 
+      position: relative; /* Añadido */
+    }
+    .header img {
+      width: 100%;
+      height: 80%;
+    }
+    .header h1 {
+      font-family: 'League Gothic', sans-serif; /* Tipografía del título */
+      font-size: 65px; /* Tamaño del título */
+      margin-top: 10px; /* Espacio superior del título */
+      text-align: center;
+      color: #C21F4F; /* Color de texto de los enlaces */
+    }
+
+    .header h1:first-of-type {
+  margin-bottom: -15px; /* Margen inferior negativo para reducir el espacio entre los dos h1 */
+font-size: 35px;
+text-align: center;
+color: #000;
+}
+
+    .header p {
+      font-family: 'montserrat';
+      font-size: 20px; /* Tamaño del texto */
+      margin-top: 20px; /* Espacio superior del texto */
+      margin-left: 270px;
+      margin-right: 270px;
+      text-align: center; /* Alineación centrada */
+    }
+    .header .title-container {
+      position: absolute;
+      left: 40px; /* Ajusta según sea necesario */
+      top: -100px; /* Ajusta según sea necesario */
+    }
+    
+    
+    .footer {
+      background-color: rgba(255, 255, 255, 0.5);
+      color: #333; /* Texto oscuro para contrastar */
+      padding: 13px 0;
+      position: fixed;
+      width: 100%;
+      bottom: 0;
+      text-align: center;
+    }
+    .navbar {
+      background-color: rgba(255, 255, 255, 0.7); /* Color de fondo de la barra de navegación con transparencia */
+      padding: 20px;
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 350px; /* Ancho de la barra de navegación */
+      height: 100vh; /* Altura para cubrir toda la pantalla */
+      transform: translateX(100%); /* Ocultar la barra de navegación al principio */
+      transition: transform 0.3s ease-in-out; /* Agregar una transición suave */
+      z-index: 999; /* Asegurar que la barra de navegación esté encima del contenido */
+      display: flex; /* Mostrar elementos como flexbox */
+      flex-direction: column; /* Apilar elementos verticalmente */
+      justify-content: center; /* Centrar verticalmente los elementos */
+    }
+    .navbar.active {
+      transform: translateX(0); /* Mostrar la barra de navegación cuando esté activa */
+    }
+    .nav-link {
+      color: #C21F4F; /* Color de texto de los enlaces */
+      font-family: 'League Gothic', sans-serif; /* Tipografía de los enlaces */
+      font-size: 35px; /* Tamaño de fuente de los enlaces */
+      text-decoration: none; /* Quitar subrayado de los enlaces */
+      margin-bottom: 15px; /* Espacio entre enlaces */
+    }
+    .nav-link:hover {
+      color: #000; /* Cambiar el color del texto al pasar el cursor */
+    }
+    .menu-toggle {
+      color: #000; /* Color del icono de hamburguesa */
+      font-size: 40px; /* Tamaño del icono aumentado */
+      cursor: pointer; /* Cambiar el cursor al pasar por encima del icono */
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000; /* Asegurar que el icono esté encima de la barra de navegación */
+    }
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5); /* Color oscuro semi-transparente */
+      z-index: 998; /* Asegurar que el fondo oscuro esté detrás de la barra de navegación */
+      display: none; /* Ocultar el fondo oscuro inicialmente */
+    }
+    .overlay.active {
+      display: block; /* Mostrar el fondo oscuro cuando la barra de navegación esté activa */
+    }
+
+    /* Alineación de párrafos desde el segundo hasta el último */
+    .header p:not(:first-child) {
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Icono de menú hamburguesa -->
+  <div class="menu-toggle" onclick="toggleNavbar()">
+    <i class="fas fa-bars"></i>
+  </div>
+
+  <!-- Fondo oscuro -->
+  <div class="overlay" onclick="toggleNavbar()"></div>
+
+  <!-- Barra de navegación -->
+  <nav class="navbar" id="navbar">
+    <a href="index.html" class="nav-link">HOME</a>
+    <a href="historia.html" class="nav-link">HISTORIA</a>
+    <a href="obras.html" class="nav-link">OBRAS</a>
+    <a href="artistas.html" class="nav-link">ARTISTAS</a>
+    <a href="formadevida.html" class="nav-link">FORMA DE VIDA</a>
+    <a href="contacto.html" class="nav-link">CONTACTO</a>
+  </nav>
+
+  <!-- Header -->
+  <div class="header">
+    <img src="images/Frame 2 (1).png" alt="Imagen Superior">
+    <h1>HISTORIA DEL</h1>
+    <h1>M I N I M A L I S M O</h1>
+    <p> <strong>Frías, sólidas, lacónicas, austeras… </strong>Así son las esculturas minimalistas.</p>
+    <p> Volúmenes creados en materiales industriales que aparecen en una exposición, insondables, dominando de forma extraña el espacio, como el monolito de «2001: Una odisea en el espacio».</p>
+    <p> El término «minimal» fue utilizado por primera vez por <strong>Richard Wollheim</strong> en 1965 para referirse a las pinturas de <strong>Ad Reinhardt</strong> y a otros objetos de <strong>muy alto contenido intelectual pero de bajo contenido de manufactura</strong>.</p>
+    <p> El minimalismo deja fuera toda emoción. Es pura contemplación intelectual y objetiva, algo que llama la atención teniendo en cuenta el <strong>contexto político y social de cuando nacen en los años 60</strong>.</p>
+    <p> El minimalismo es, por así decirlo, como una performance. De alguna manera somo nosotros los espectadores los que hacemos la obra. Esto lo explican los propios artistas minimalistas al afirmar que estas esculturas sólo funcionan con público. Si no hay nadie, quedan desactivadas.</p>
+    <p> El minimalismo se basa en <strong>influír en el espacio que lo rodea</strong> y sobre todo, <strong>influír en quien está en este espacio.</strong></p>
+    <p> Esta característica es propia de la escultura, sin embargo los minimalistas utilizaron con mucho cuidado la palabra «escultura». No querían saber nada del ilusionismo que conlleva el concepto, pues la escultura es, ni más ni menos, transformar una materia prima para convertirla en otra cosa. <strong>El material es clave</strong> para esta gente, mostrar simple y llánamente <strong>«el objeto»</strong>.</p>
+    <p> Son obras rigurosas, muy precisas, como materiales industriales. El artista minimal no esculpe, no suda, no le salen callos en las manos de tallar material. El artista minimal presenta su «propuesta» (esta si es una palabra que les gustaba) y es otro quien hace la pieza final. Incluso eliminan todo rastro de su huella, de autoría.</p>
+    <p> El minimalismo es, como toda forma de arte, un intento de <strong>poner un poco de orden en un mundo caótico</strong>.</p>
+    <p> Es el <strong>último movimiento de la modernidad </strong>. Después de ellos, llegaría la posmodernidad.</p>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <span>Derechos de autor © 2024. Minimal.</span>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    function toggleNavbar() {
+      var navbar = document.getElementById("navbar");
+      var overlay = document.querySelector(".overlay");
+      navbar.classList.toggle("active");
+      overlay.classList.toggle("active");
+    }
+  </script>
+</body>
+</html>

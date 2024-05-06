@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FORMA DE VIDA</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Agregamos Font Awesome para obtener el icono de hamburguesa -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=League+Gothic&display=swap"> <!-- Agregamos la fuente League Gothic -->
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #f8f9fa; /* Color de fondo */
+      position: relative; /* Añadido */
+    }
+    .footer {
+      background-color: rgba(255, 255, 255, 0.5);
+      color: #333; /* Texto oscuro para contrastar */
+      padding: 13px 0;
+      position: fixed;
+      width: 100%;
+      bottom: 0;
+      text-align: center;
+    }
+    .navbar {
+      background-color: rgba(255, 255, 255, 0.7); /* Color de fondo de la barra de navegación con transparencia */
+      padding: 20px;
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 350px; /* Ancho de la barra de navegación */
+      height: 100vh; /* Altura para cubrir toda la pantalla */
+      transform: translateX(100%); /* Ocultar la barra de navegación al principio */
+      transition: transform 0.3s ease-in-out; /* Agregar una transición suave */
+      z-index: 999; /* Asegurar que la barra de navegación esté encima del contenido */
+      display: flex; /* Mostrar elementos como flexbox */
+      flex-direction: column; /* Apilar elementos verticalmente */
+      justify-content: center; /* Centrar verticalmente los elementos */
+    }
+    .navbar.active {
+      transform: translateX(0); /* Mostrar la barra de navegación cuando esté activa */
+    }
+    .nav-link {
+      color: #C21F4F; /* Color de texto de los enlaces */
+      font-family: 'League Gothic', sans-serif; /* Tipografía de los enlaces */
+      font-size: 35px; /* Tamaño de fuente de los enlaces */
+      text-decoration: none; /* Quitar subrayado de los enlaces */
+      margin-bottom: 15px; /* Espacio entre enlaces */
+    }
+    .nav-link:hover {
+      color: #000; /* Cambiar el color del texto al pasar el cursor */
+    }
+    .menu-toggle {
+      color: #000; /* Color del icono de hamburguesa */
+      font-size: 40px; /* Tamaño del icono aumentado */
+      cursor: pointer; /* Cambiar el cursor al pasar por encima del icono */
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000; /* Asegurar que el icono esté encima de la barra de navegación */
+    }
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5); /* Color oscuro semi-transparente */
+      z-index: 998; /* Asegurar que el fondo oscuro esté detrás de la barra de navegación */
+      display: none; /* Ocultar el fondo oscuro inicialmente */
+    }
+    .overlay.active {
+      display: block; /* Mostrar el fondo oscuro cuando la barra de navegación esté activa */
+    }
+    .title-container {
+      text-align: center;
+      margin-top: 100px; /* Espacio para el título */
+    }
+    .title {
+      font-size: 70px;
+      font-weight: bold;
+      font-family: 'League Gothic', sans-serif;
+      color: #C21F4F;
+    }
+    .subtitle {
+      font-size: 20px;
+      
+    }
+    .minititle {
+      font-size: 40px;
+      margin-top: 60px;
+      margin-right: 1310px; /* Alineado a la izquierda */
+      font-family: 'League Gothic', sans-serif;
+      color:#000
+    }
+    .cards-container {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 5px; /* Espacio entre el subtítulo y las tarjetas */
+      margin-left: 100px;
+      margin-right: 100px;
+    }
+    .card {
+      width: 800px; /* Ancho de la tarjeta */
+      height: 210px; /* Alto de la tarjeta */
+      background-color: #fff; /* Color de fondo de las tarjetas */
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra de las tarjetas */
+    }
+    .card-content {
+      padding: 20px;
+      display: flex;
+      align-items: center; /* Centrar contenido verticalmente */
+    }
+    .card img {
+      width: 40%; /* Ancho de la imagen */
+      height: auto; /* Altura automática para mantener la proporción */
+      border-radius: 10px; /* Bordes redondeados de la imagen */
+      margin-right: 20px; /* Espacio a la derecha de la imagen */
+    }
+    .card-details {
+      flex: 1; /* Que ocupe todo el espacio disponible */
+    }
+    .card-title {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .card-paragraph {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+    .card-button {
+      background-color:#C21F4F;
+      color: #fff;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background-color 0.3s;
+    }
+    .card-button:hover {
+      background-color:#000;
+    }
+
+    .bound {
+      overflow: hidden;
+      margin-top: 30px;
+      margin-bottom: 50px;
+    }
+
+    .iframe-wrapper {
+      position: relative;
+      width: 100%;
+      height: 0;
+    }
+
+    .iframe-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Icono de menú hamburguesa -->
+  <div class="menu-toggle" onclick="toggleNavbar()">
+    <i class="fas fa-bars"></i>
+  </div>
+
+  <!-- Fondo oscuro -->
+  <div class="overlay" onclick="toggleNavbar()"></div>
+
+  <!-- Barra de navegación -->
+  <nav class="navbar" id="navbar">
+    <a href="index.html" class="nav-link">HOME</a>
+    <a href="historia.html" class="nav-link">HISTORIA</a>
+    <a href="obras.html" class="nav-link">OBRAS</a>
+    <a href="artistas.html" class="nav-link">ARTISTAS</a>
+    <a href="formadevida.html" class="nav-link">FORMA DE VIDA</a>
+    <a href="contacto.html" class="nav-link">CONTACTO</a>
+  </nav>
+
+  <!-- Título centrado -->
+  <div class="title-container">
+    <div class="title">FORMA DE VIDA</div>
+    <div class="subtitle">El minimalismo al pasar de los años, se extendió a diferentes disciplinas y pasó las fronteras del arte, estas son algunas de ellas.</div>
+    <div class="minititle">ARQUITECTURA</div> <!-- Nuevo título -->
+  </div>
+
+  <!-- Contenedor de tarjetas -->
+  <div class="cards-container">
+    <!-- Tarjeta 1 -->
+    <div class="card">
+      <div class="card-content">
+        <img src="images/fdv/arqui.jpeg" alt="Imagen 1">
+        <div class="card-details">
+          <div class="card-title">Arquitectura Minimalista</div>
+          <div class="card-paragraph">En la arquitectura, el minimalismo tuvo una enorme influencia. Se comenzó a evitar los excesos y a respetar las formas.</div>
+          <a href="https://www.admagazine.com/articulos/arquitectura-minimalista-historia-y-caracteristicas"><button class="card-button">Ver mas...</button></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tarjeta 2 -->
+    <div class="card">
+      <div class="card-content">
+        <img src="images/fdv/arq.jpeg" alt="Imagen 2">
+        <div class="card-details">
+          <div class="card-title">La nueva Arquitectura</div>
+          <div class="card-paragraph">La naturalidad de los elementos tomó mucha importancia, dejando de lado los revestimientos. </div>
+          <a href="https://www.echeverrimontes.com/blog/claves-arquitectura-minimalista"><button class="card-button">Ver mas...</button></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="minititle" style="margin-left: 105px;">
+    <div class="minititle">DECORACIÓN</div>
+  </div>
+
+  <!-- Contenedor de tarjetas -->
+  <div class="cards-container">
+    <!-- Tarjeta 3 -->
+    <div class="card">
+      <div class="card-content">
+        <img src="images/fdv/decoart.jpeg" alt="Imagen 1">
+        <div class="card-details">
+          <div class="card-title">Menos es más</div>
+          <div class="card-paragraph">En la arquitectura, el minimalismo tuvo una enorme influencia. Se comenzó a evitar los excesos y a respetar las formas.</div>
+          <a href="https://www.admagazine.com/articulos/estilo-minimalista-como-ordenar-y-tener-estilo-al-mismo-tiempo"><button class="card-button">Ver mas...</button></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tarjeta 4 -->
+    <div class="card">
+      <div class="card-content">
+        <img src="images/fdv/decooart.jpeg" alt="Imagen 2">
+        <div class="card-details">
+          <div class="card-title">El minimalismo en la decoración</div>
+          <div class="card-paragraph">La naturalidad de los elementos tomó mucha importancia, dejando de lado los revestimientos. </div>
+          <a href="https://www.bbc.com/mundo/noticias/2014/03/140313_economia_vivir_con_menos_jgc"><button class="card-button">Ver mas...</button></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="minititle" style="margin-left: 105px;">
+    <div class="minititle">MÚSICA</div>
+  </div>
+
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <span>Derechos de autor © 2024. Minimal.</span>
+    </div>
+  </footer>
+
+  <!-- Spotify Playlist -->
+  <section class="bound">
+    <div class="container">
+      <div class="iframe-wrapper" style="padding-bottom:43.75%">
+       <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/3pJqMo8M0uvNQyCZy2qUHY?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scripts -->
+  <script>
+    function toggleNavbar() {
+      var navbar = document.getElementById("navbar");
+      var overlay = document.querySelector(".overlay");
+      navbar.classList.toggle("active");
+      overlay.classList.toggle("active");
+    }
+  </script>
+</body>
+</html>
