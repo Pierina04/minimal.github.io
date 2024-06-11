@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MINIMAL</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Agregamos Font Awesome para obtener el icono de hamburguesa -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=League+Gothic&display=swap"> <!-- Agregamos la fuente League Gothic -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=League+Gothic&display=swap">
   <style>
     body {
       margin: 0;
@@ -15,63 +15,63 @@
       background-image: url('images/Minimal.png');
       background-size: cover;
       background-position: center;
-      position: relative; /* Añadido */
+      position: relative;
     }
     .footer {
       background-color: rgba(255, 255, 255, 0.5);
-      color: #333; /* Texto oscuro para contrastar */
+      color: #333;
       padding: 20px 0;
       position: fixed;
       width: 100%;
       bottom: 0;
       text-align: center;
     }
-    .centered-image-container { /* Añadido */
+    .centered-image-container {
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
     }
-    .centered-image { /* Añadido */
-      width: 220px; /* Ancho de la imagen */
-      height: auto; /* Altura automática según el ancho */
+    .centered-image {
+      width: 220px;
+      height: auto;
     }
     .navbar {
-      background-color: rgba(255, 255, 255, 0.7); /* Color de fondo de la barra de navegación con transparencia */
+      background-color: rgba(255, 255, 255, 0.7);
       padding: 20px;
       position: fixed;
       top: 0;
       right: 0;
-      width: 300px; /* Ancho de la barra de navegación */
-      height: 100vh; /* Altura para cubrir toda la pantalla */
-      transform: translateX(100%); /* Ocultar la barra de navegación al principio */
-      transition: transform 0.3s ease-in-out; /* Agregar una transición suave */
-      z-index: 999; /* Asegurar que la barra de navegación esté encima del contenido */
-      display: flex; /* Mostrar elementos como flexbox */
-      flex-direction: column; /* Apilar elementos verticalmente */
-      justify-content: center; /* Centrar verticalmente los elementos */
+      width: 300px;
+      height: 100vh;
+      transform: translateX(100%);
+      transition: transform 0.3s ease-in-out;
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
     .navbar.active {
-      transform: translateX(0); /* Mostrar la barra de navegación cuando esté activa */
+      transform: translateX(0);
     }
     .nav-link {
-      color: #C21F4F; /* Color de texto de los enlaces */
-      font-family: 'League Gothic', sans-serif; /* Tipografía de los enlaces */
-      font-size: 35px; /* Tamaño de fuente de los enlaces */
-      text-decoration: none; /* Quitar subrayado de los enlaces */
-      margin-bottom: 15px; /* Espacio entre enlaces */
+      color: #C21F4F;
+      font-family: 'League Gothic', sans-serif;
+      font-size: 35px;
+      text-decoration: none;
+      margin-bottom: 15px;
     }
     .nav-link:hover {
-      color: #000; /* Cambiar el color del texto al pasar el cursor */
+      color: #000;
     }
     .menu-toggle {
-      color: #000; /* Color del icono de hamburguesa */
-      font-size: 24px; /* Tamaño del icono */
-      cursor: pointer; /* Cambiar el cursor al pasar por encima del icono */
+      color: #000;
+      font-size: 24px;
+      cursor: pointer;
       position: fixed;
       top: 20px;
       right: 20px;
-      z-index: 1000; /* Asegurar que el icono esté encima de la barra de navegación */
+      z-index: 1000;
     }
     .overlay {
       position: fixed;
@@ -79,24 +79,23 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(0, 0, 0, 0.5); /* Color oscuro semi-transparente */
-      z-index: 998; /* Asegurar que el fondo oscuro esté detrás de la barra de navegación */
-      display: none; /* Ocultar el fondo oscuro inicialmente */
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 998;
+      display: none;
     }
     .overlay.active {
-      display: block; /* Mostrar el fondo oscuro cuando la barra de navegación esté activa */
+      display: block;
     }
   </style>
 </head>
 <body>
 
   <!-- Contenido principal -->
-  <!-- Puedes añadir aquí el contenido de tu página -->
 
   <!-- Footer -->
   <footer class="footer">
     <div class="container">
-      <span><strong >©2024 Pierina Vannacci</strong> </span>
+      <span><strong>©2024 Pierina Vannacci</strong></span>
     </div>
   </footer>
 
@@ -121,6 +120,7 @@
     <a href="artistas.html" class="nav-link">ARTISTAS</a>
     <a href="formadevida.html" class="nav-link">FORMA DE VIDA</a>
     <a href="contacto.html" class="nav-link">CONTACTO</a>
+    <a href="registro.html" class="nav-link"><i class="fas fa-user"></i> </a>
   </nav>
 
   <!-- Scripts -->

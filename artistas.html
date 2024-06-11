@@ -132,6 +132,34 @@
       font-size: 18px;
       font-weight: bold;
     }
+
+    /* Estilos para el formulario de búsqueda */
+    .search-container {
+      text-align: center;
+      margin: 20px 0; /* Espacio alrededor del formulario */
+    }
+
+    .search-container input[type="text"] {
+      padding: 10px;
+      width: 300px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .search-container button {
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      background-color: #C21F4F;
+      color: #fff;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .search-container button:hover {
+      background-color: #a81c45;
+    }
   </style>
 </head>
 <body>
@@ -152,43 +180,62 @@
     <a href="artistas.html" class="nav-link">ARTISTAS</a>
     <a href="formadevida.html" class="nav-link">FORMA DE VIDA</a>
     <a href="contacto.html" class="nav-link">CONTACTO</a>
+    <a href="registro.html" class="nav-link"><i class="fas fa-user"></i> </a>
   </nav>
 
   <!-- Título centrado -->
   <h1 style="text-align: center; margin-top: 50px; color: #C21F4F; font-family: 'League Gothic', sans-serif; font-size: 70px;">A R T I S T A S</h1>
 
+  <!-- Formulario de búsqueda -->
+  <div class="search-container">
+    <form action="resultadobuscar.php" method="post">
+    <input name="buscar" type="text" placeholder="Buscar artistas...">
+    <button type="submit">Buscar</button>
+  </form>
+  </div>
+
   <!-- Contenedor de tarjetas -->
   <div class="cards-container">
     <!-- Tarjeta 1 -->
+    <a href="adreinhardt.html">
     <div class="card">
       <img src="images/artistas/adart.png" alt="Artista 1">
       <div class="overlay-text">Ad Reinhardt</div>
     </div>
+  </a>
     <!-- Tarjeta 2 -->
+    <a href="donaldjudd.html">
     <div class="card">
       <img src="images/artistas/donaldd.jpeg" alt="Artista 3">
       <div class="overlay-text">Donald Judd</div>
     </div>
+  </a>
    
     <!-- Tarjeta 3 -->
-    <div class="card">
-      <img src="images/artistas/richardart.jpeg" alt="Artista 5">
-      <div class="overlay-text">Richard Serra</div>
-    </div>
-  </div>
+    <a href="richardserra.html">
+      <div class="card">
+        <img src="images/artistas/richardart.jpeg"  alt="Artista 5">
+        <div class="overlay-text">Richard Serra</div>
+      </div>
+    </a>
 
   <!-- Contenedor de tarjetas segunda fila -->
   <div class="cards-container">
     <!-- Tarjeta 4 -->
+    <a href="frankstella.html">
     <div class="card">
       <img src="images/artistas/frankart.jpeg" alt="Artista 4">
       <div class="overlay-text">Frank Stella</div>
     </div>
+  </a>
+  
     <!-- Tarjeta 5 -->
+    <a href="sollewitt.html">
     <div class="card">
       <img src="images/artistas/soool.png" alt="Artista 2">
       <div class="overlay-text">Sol LeWitt</div>
     </div>
+  </a>
     
   </div>
 

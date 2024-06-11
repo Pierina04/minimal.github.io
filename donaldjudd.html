@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MINIMAL</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=League+Gothic&display=swap">
+  <style>
+    /* Estilos adicionales que proporcionaste */
+    html {
+      font: 400 1em/1.33 "Times New Roman";
+      background-color: white;
+    }
+    body {
+      padding-bottom: 3em;
+      background: #ffffff; /* Cambiado a fondo blanco */
+    }
+    .profile {
+      background: url("images/artistas/donaldd.jpeg") center 30%;
+      box-shadow: inset 0 0 5em 1em #000;
+      height: 50vh;
+      background-size: cover;
+    }
+    .profile {
+      width: 50%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      height: auto;
+    }
+    hr {
+      overflow: visible;
+      padding: 0;
+      border: none;
+      border-top: medium double #333;
+      color: #333;
+      text-align: center;
+    }
+    hr:after {
+      content: "";
+      display: inline-block;
+      position: relative;
+      top: -0.7em;
+      font-size: 1.5em;
+      padding: 0 0.25em;
+      background: #cccccc;
+    }
+    article {
+      color: #ccc;
+      margin-left: 50%;
+      position: relative;
+      max-width: 66em;
+      margin-top: 20px;
+    }
+    header {
+      text-align: center;
+      padding: 0 2em;
+    }
+    h1 {
+      text-transform: uppercase;
+      font-weight: 400;
+      font-family: 'League Gothic', sans-serif;
+      color: #C21F4F;
+      
+    }
+    .headline-1,
+    .headline-2 {
+      line-height: 1;
+    }
+    .headline-1 {
+      font-size: 5.5vw; /* Reducido el tamaño */
+    }
+    .headline-2 {
+      font-size: 5.5vw; /* Reducido el tamaño */
+    }
+    .subheading {
+      color: #ccc;
+      font-size: 1.5625em;
+      max-width: 25em;
+      margin: 0 auto;
+      text-align: center;
+      padding-bottom: 1.5em;
+    }
+    section {
+      padding: 0 3em;
+      font-size: 20px;
+      font-family: 'montserrat';
+      color: #000;
+    }
+    img {
+      max-width: 100%;
+      margin-bottom: 1.33em;
+      vertical-align: middle;
+    }
+    blockquote {
+      border-left: 0.5em solid #ccc;
+      font-size: 2em;
+      padding: 0.5em;
+      line-height: 1.5;
+      margin-left: 0;
+      margin-right: 0;
+      position: absolute;
+      right: 100%;
+      top: 70vh;
+      width: 12em;
+      background: #191919;
+      font-size: 25px;
+      color: #ccc;
+    }
+    blockquote::before,
+blockquote::after {
+  color: #ccc;
+  font-size: 1.25em;
+  line-height: 0;
+}
+
+blockquote::before {
+  content: "\""; /* Cambiado el contenido por comillas dobles */
+}
+
+blockquote::after {
+  content: "\""; /* Cambiado el contenido por comillas dobles */
+}
+
+
+    /* Estilos de la barra de navegación */
+    .navbar {
+      background-color: rgba(255, 255, 255, 0.7);
+      padding: 20px;
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 350px;
+      height: 100vh;
+      transform: translateX(100%);
+      transition: transform 0.3s ease-in-out;
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .navbar.active {
+      transform: translateX(0);
+    }
+    .nav-link {
+      color: #C21F4F;
+      font-family: 'League Gothic', sans-serif;
+      font-size: 35px;
+      text-decoration: none;
+      margin-bottom: 15px;
+    }
+    .nav-link:hover {
+      color: #000;
+    }
+    .menu-toggle {
+      color: #000;
+      font-size: 40px;
+      cursor: pointer;
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+    }
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 998;
+      display: none;
+    }
+    .overlay.active {
+      display: block;
+    }
+
+    /* Estilos para la galería */
+
+    .gallery-container {
+      display: flex;
+      justify-content: center; /* Centrar la galería */
+    }
+
+    .gallery {
+      --s: 150px; /* control the size */
+      --g: 10px;  /* control the gap */
+      --f: 1.5;   /* control the scale factor */
+      margin-left: 110px;
+      
+      display: grid;
+      gap: var(--g);
+      width: calc(3*var(--s) + 2*var(--g));
+      aspect-ratio: 1;
+      grid-template-columns: repeat(3, auto);
+      margin-top: 1em; /* Añadido para espacio entre párrafos y galería */
+    }
+
+    .gallery > img {
+      width: 0;
+      height: 0;
+      min-height: 100%;
+      min-width: 100%;
+      object-fit: cover;
+      cursor: pointer;
+      filter: grayscale(80%);
+      transition: .35s linear;
+    }
+
+    .gallery img:hover {
+      filter: grayscale(0);
+      width:  calc(var(--s)*var(--f));
+      height: calc(var(--s)*var(--f));
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Icono de menú hamburguesa -->
+  <div class="menu-toggle" onclick="toggleNavbar()">
+    <i class="fas fa-bars"></i>
+  </div>
+
+  <!-- Fondo oscuro -->
+  <div class="overlay" onclick="toggleNavbar()"></div>
+
+  <!-- Barra de navegación -->
+  <nav class="navbar" id="navbar">
+    <a href="index.html" class="nav-link">HOME</a>
+    <a href="historia.html" class="nav-link">HISTORIA</a>
+    <a href="obras.html" class="nav-link">OBRAS</a>
+    <a href="artistas.html" class="nav-link">ARTISTAS</a>
+    <a href="formadevida.html" class="nav-link">FORMA DE VIDA</a>
+    <a href="contacto.html" class="nav-link">CONTACTO</a>
+    <a href="registro.html" class="nav-link"><i class="fas fa-user"></i> </a>
+  </nav>
+
+  <!-- Contenido principal -->
+  <div class="profile"></div>
+  <article>
+    <header>
+      <h1>
+        <div class="headline-1">
+          DONALD JUDD
+        </div>
+        <div class="headline-2">
+          
+        </div>
+      </h1>
+    </header>
+    <hr />
+    <section>
+      <p>
+        Escultor estadounidense. Su trayectoria artística pasó de una primera etapa como pintor abstracto de composiciones geométricas bastante austeras a una segunda etapa como crítico de arte (durante los años cincuenta) y a una tercera como escultor, desde comienzos de la década de 1960.      </p>
+      <p>
+        Este último período es el que lo convirtió en una figura de proyección universal y en uno de los principales representantes y teóricos del minimalismo. El arte minimal se consolidó en Estados Unidos a partir de 1965 siguiendo un proceso reduccionista que llevaría la pintura, pero sobre todo la escultura, hacia sus estructuras más simples y esenciales. El término fue aplicado por primera vez por Richard Wollheim en un artículo de la revista Arts Magazine en el que, citando obras de Duchamp, Reinhardt y algunos artistas pop, defendía la intervención mínima de los autores. Se debe sin embargo a Ad Reinhardt el famoso "menos es más", que se convirtió en una de las consignas fundamentales del movimiento.      </p>
+      <p>
+        Donald Judd utilizó la madera en sus primeras realizaciones, pero pronto incorporó el plexiglás y el acero inoxidable, su material más característico. Con ellos creó obras basadas en yuxtaposiciones y superposiciones mediante las que intentó expresar relaciones afines a las progresiones matemáticas. Todas sus creaciones son obras frías, carentes de cualquier intención decorativa o implicación emocional, en las que a menudo utiliza el color para de esta manera acentuar la estructura de las piezas.
+
+    </p>
+      <p>
+        La repetición, la despersonalización y la depuración, tres de los conceptos básicos del arte minimal, alcanzan en obras como la serie Stacks una de sus más evidentes plasmaciones. Judd se sirve de módulos geométricos elementales y neutros, desprovistos de cualquier valor significativo, simbólico o expresivo, que se presentan alineados en intervalos regulares. El resultado es una obra de arte reducida a su mínima expresión, deliberadamente fría (a lo que sin duda contribuye también el uso de materiales de fabricación industrial), que puede ser vista como una reacción contra la exacerbación subjetiva de artistas contemporáneos como Jackson Pollock.      </p>
+     
+      <blockquote>La mayor parte del arte es frágil y algunas deberían colocarse y no volver a moverse nunca más.</blockquote>
+      <div class="gallery">
+        <img src="images/obras/donald.webp" alt="inside a town between two big buildings">
+        <img src="images/obras/donald2.webp" alt="a great view of the sea above the mountain">
+        <img src="images/obras/donald3.jpeg" alt="inside a town between two big buildings">
+        <img src="images/obras/donald4.webp" alt="inside a town between two big buildings">
+        <img src="images/obras/donald05.jpeg" alt="a great view of the sea above the mountain">
+        <img src="images/obras/donald06.avif" alt="inside a town between two big buildings">
+        <img src="images/obras/donald07.jpeg" alt="inside a town between two big buildings">
+        <img src="images/obras/donald08.jpeg" alt="a great view of the sea above the mountain">
+        <img src="images/obras/donald09.webp" alt="a great view of the sea above the mountain">
+      </div>
+    </section>
+  </article>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <span><strong>©2024 Pierina Vannacci</strong></span>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+    function toggleNavbar() {
+      var navbar = document.getElementById("navbar");
+      var overlay = document.querySelector(".overlay");
+      navbar.classList.toggle("active");
+      overlay.classList.toggle("active");
+    }
+  </script>
+</body>
+</html>

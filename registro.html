@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Agregamos Font Awesome para obtener el icono de hamburguesa -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=League+Gothic&display=swap"> <!-- Agregamos la fuente League Gothic -->
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #f8f9fa; /* Color de fondo */
+      position: relative; /* Añadido */
+    }
+    .footer {
+      background-color: rgba(255, 255, 255, 0.5);
+      color: #333; /* Texto oscuro para contrastar */
+      padding: 13px 0;
+      position: fixed;
+      width: 100%;
+      bottom: 0;
+      text-align: center;
+    }
+    .navbar {
+      background-color: rgba(255, 255, 255, 0.7); /* Color de fondo de la barra de navegación con transparencia */
+      padding: 20px;
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 350px; /* Ancho de la barra de navegación */
+      height: 100vh; /* Altura para cubrir toda la pantalla */
+      transform: translateX(100%); /* Ocultar la barra de navegación al principio */
+      transition: transform 0.3s ease-in-out; /* Agregar una transición suave */
+      z-index: 999; /* Asegurar que la barra de navegación esté encima del contenido */
+      display: flex; /* Mostrar elementos como flexbox */
+      flex-direction: column; /* Apilar elementos verticalmente */
+      justify-content: center; /* Centrar verticalmente los elementos */
+    }
+    .navbar.active {
+      transform: translateX(0); /* Mostrar la barra de navegación cuando esté activa */
+    }
+    .nav-link {
+      color: #C21F4F; /* Color de texto de los enlaces */
+      font-family: 'League Gothic', sans-serif; /* Tipografía de los enlaces */
+      font-size: 35px; /* Tamaño de fuente de los enlaces */
+      text-decoration: none; /* Quitar subrayado de los enlaces */
+      margin-bottom: 15px; /* Espacio entre enlaces */
+    }
+    .nav-link:hover {
+      color: #000; /* Cambiar el color del texto al pasar el cursor */
+    }
+    .menu-toggle {
+      color: #000; /* Color del icono de hamburguesa */
+      font-size: 40px; /* Tamaño del icono aumentado */
+      cursor: pointer; /* Cambiar el cursor al pasar por encima del icono */
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000; /* Asegurar que el icono esté encima de la barra de navegación */
+    }
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5); /* Color oscuro semi-transparente */
+      z-index: 998; /* Asegurar que el fondo oscuro esté detrás de la barra de navegación */
+      display: none; /* Ocultar el fondo oscuro inicialmente */
+    }
+    .overlay.active {
+      display: block; /* Mostrar el fondo oscuro cuando la barra de navegación esté activa */
+    }
+   
+    *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+}
+
+body{
+    background-image: url(images/Minimal.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+main{
+    width: 100%;
+    padding: 20px;
+    margin: auto;
+    margin-top: 100px;
+}
+
+.contenedor__todo{
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
+    position: relative;
+}
+
+.caja__trasera{
+    width: 100%;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: center;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    background-color:(0, 128, 255, 0.5);
+
+}
+
+.caja__trasera div{
+    margin: 100px 40px;
+    color: white;
+    transition: all 500ms;
+}
+
+
+.caja__trasera div p,
+.caja__trasera button{
+    margin-top: 30px;
+}
+
+.caja__trasera div h3{
+    font-weight: 400;
+    font-size: 26px;
+}
+
+.caja__trasera div p{
+    font-size: 16px;
+    font-weight: 300;
+}
+
+.caja__trasera button{
+    padding: 10px 40px;
+    border: 2px solid #fff;
+    font-size: 14px;
+    background: transparent;
+    font-weight: 600;
+    cursor: pointer;
+    color: white;
+    outline: none;
+    transition: all 300ms;
+}
+
+.caja__trasera button:hover{
+    background: #fff;
+    color:#C21F4F;
+}
+
+/*Formularios*/
+
+.contenedor__login-register{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 380px;
+    position: relative;
+    top: -185px;
+    left: 10px;
+
+    /*La transicion va despues del codigo JS*/
+    transition: left 500ms cubic-bezier(0.175, 0.885, 0.320, 1.275);
+}
+
+.contenedor__login-register form{
+    width: 100%;
+    padding: 80px 20px;
+    background: white;
+    position: absolute;
+    border-radius: 20px;
+}
+
+.contenedor__login-register form h2{
+    font-size: 40px;
+    text-align: center;
+    margin-bottom: 20px;
+    color:#C21F4F;
+    font-family: 'League Gothic', sans-serif;
+}
+
+.contenedor__login-register form input{
+    width: 100%;
+    margin-top: 20px;
+    padding: 10px;
+    border: none;
+    background: #F2F2F2;
+    font-size: 16px;
+    outline: none;
+}
+
+.contenedor__login-register form button{
+    padding: 10px 40px;
+    margin-top: 40px;
+    border: none;
+    font-size: 14px;
+    background:#C21F4F;
+    font-weight: 600;
+    cursor: pointer;
+    color: white;
+    outline: none;
+}
+
+
+
+
+.formulario__login{
+    opacity: 1;
+    display: block;
+}
+.formulario__register{
+    display: none;
+}
+
+
+
+@media screen and (max-width: 850px){
+
+    main{
+        margin-top: 50px;
+    }
+
+    .caja__trasera{
+        max-width: 350px;
+        height: 300px;
+        flex-direction: column;
+        margin: auto;
+    }
+
+    .caja__trasera div{
+        margin: 0px;
+        position: absolute;
+    }
+
+
+    /*Formularios*/
+
+    .contenedor__login-register{
+        top: -10px;
+        left: -5px;
+        margin: auto;
+    }
+
+    .contenedor__login-register form{
+        position: relative;
+    }
+}
+
+    
+
+    header {
+      position: relative;
+      margin: 100px 0 25px 0;
+      font-size: 70px;
+      text-align: center;
+      letter-spacing: 7px;
+      font-family: League Gothic;
+      color: #C21F4F;
+    }
+
+
+
+
+
+    
+   
+  </style>
+</head>
+<body>
+
+
+  <!-- Icono de menú hamburguesa -->
+  <div class="menu-toggle" onclick="toggleNavbar()">
+    <i class="fas fa-bars"></i>
+  </div>
+
+  <!-- Fondo oscuro -->
+  <div class="overlay" onclick="toggleNavbar()"></div>
+
+  <!-- Barra de navegación -->
+  <nav class="navbar" id="navbar">
+    <a href="index.html" class="nav-link">HOME</a>
+    <a href="historia.html" class="nav-link">HISTORIA</a>
+    <a href="obras.html" class="nav-link">OBRAS</a>
+    <a href="artistas.html" class="nav-link">ARTISTAS</a>
+    <a href="formadevida.html" class="nav-link">FORMA DE VIDA</a>
+    <a href="contacto.html" class="nav-link">CONTACTO</a>
+    <a href="registro.html" class="nav-link"><i class="fas fa-user"></i> </a>
+  </nav>
+
+  <!-- Header -->
+  <main>
+
+    <div class="contenedor__todo">
+        <div class="caja__trasera">
+            <div>
+            <h3>¿Ya tienes una cuenta?</h3>
+            <p>Inicia sesion para entrar en la pagina</p>
+            <button id="btn__iniciar-sesion">Iniciar Sesion</button>
+         </div>
+         <div class="caja__trasera-register">
+            <h3>¿Aun no tienes una cuenta?</h3>
+            <p>Registrate para que puedas iniciar sesion</p>
+            <button  id="btn__registrarse">Registrarse</button>
+         </div>
+        </div>
+        <!--Formulario de login y Registro-->
+        <div class="contenedor__login-register">
+            <!--Login-->
+            <form action="login.php" method="POST" class="formulario__login">
+                <h2>Iniciar sesion</h2>
+                <input type="text" placeholder="Nombre" name="usuario" required/>
+                <input type="password" placeholder="Contraseña" name="clave" required/>
+                <button type="submit">Entrar</button>
+            </form>
+            <!--Registro-->
+            <form action="registro.php"  method="POST" class="formulario__register">
+                <h2>Registrarse</h2>
+                <input type="text" placeholder="Nombre" name="nombre">
+                <input type="text" placeholder="Correo Electronico" name="correo">
+                <input type="text" placeholder="Usuario" name="usuario">
+                <input type="password" placeholder="Contraseña" name="contraseña">
+                <button type="submit">Registrarse</button>
+            </form>
+        </div>
+    </div>
+ </main>
+
+  
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <span>Derechos de autor © 2024. Minimal.</span>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    function toggleNavbar() {
+      var navbar = document.getElementById("navbar");
+      var overlay = document.querySelector(".overlay");
+      navbar.classList.toggle("active");
+      overlay.classList.toggle("active");
+    }
+
+    //Ejecutando funciones
+document.getElementById("btn__iniciar-sesion").addEventListener("click", iniciarSesion);
+document.getElementById("btn__registrarse").addEventListener("click", register);
+window.addEventListener("resize", anchoPage);
+
+//Declarando variables
+var formulario_login = document.querySelector(".formulario__login");
+var formulario_register = document.querySelector(".formulario__register");
+var contenedor_login_register = document.querySelector(".contenedor__login-register");
+var caja_trasera_login = document.querySelector(".caja__trasera-login");
+var caja_trasera_register = document.querySelector(".caja__trasera-register");
+
+    //FUNCIONES
+
+function anchoPage(){
+
+    if (window.innerWidth > 850){
+        caja_trasera_register.style.display = "block";
+        caja_trasera_login.style.display = "block";
+    }else{
+        caja_trasera_register.style.display = "block";
+        caja_trasera_register.style.opacity = "1";
+        caja_trasera_login.style.display = "none";
+        formulario_login.style.display = "block";
+        contenedor_login_register.style.left = "0px";
+        formulario_register.style.display = "none";   
+    }
+}
+
+anchoPage();
+
+
+    function iniciarSesion(){
+        if (window.innerWidth > 850){
+            formulario_login.style.display = "block";
+            contenedor_login_register.style.left = "10px";
+            formulario_register.style.display = "none";
+            caja_trasera_register.style.opacity = "1";
+            caja_trasera_login.style.opacity = "0";
+        }else{
+            formulario_login.style.display = "block";
+            contenedor_login_register.style.left = "0px";
+            formulario_register.style.display = "none";
+            caja_trasera_register.style.display = "block";
+            caja_trasera_login.style.display = "none";
+        }
+    }
+
+    function register(){
+        if (window.innerWidth > 850){
+            formulario_register.style.display = "block";
+            contenedor_login_register.style.left = "410px";
+            formulario_login.style.display = "none";
+            caja_trasera_register.style.opacity = "0";
+            caja_trasera_login.style.opacity = "1";
+        }else{
+            formulario_register.style.display = "block";
+            contenedor_login_register.style.left = "0px";
+            formulario_login.style.display = "none";
+            caja_trasera_register.style.display = "none";
+            caja_trasera_login.style.display = "block";
+            caja_trasera_login.style.opacity = "1";
+        }
+}
+  </script>
+</body>
+</html>
